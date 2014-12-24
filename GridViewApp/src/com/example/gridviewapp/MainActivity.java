@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
 public class MainActivity extends Activity {
@@ -20,18 +21,34 @@ public class MainActivity extends Activity {
         gridview.setAdapter(new ImageAdapter(MainActivity.this));
         gridview.setAdapter(new ImageAdapter(MainActivity.this));
         
-        gridview.setOnClickListener(new OnClickListener() {
+//        gridview.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				
+//				Intent i = new Intent (MainActivity.this,SingleViewActivity.class);
+//				i.putExtra("id", position);
+//				startActivity(i);
+//				
+//			}
+//		});
 			
+        gridview.setOnItemClickListener(new OnItemClickListener() {
+
 			@Override
-			public void onItemClick(AdapterView<Adapter>parent,View v,int position,long id) {
-			
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
 				Intent i = new Intent (MainActivity.this,SingleViewActivity.class);
-				i.putExtra("id", position);
+				i.putExtra("id", arg2);
 				startActivity(i);
 				
 			}
 		});
-    }
+		
+				
+			}
+	
+    
 
 
     @Override
